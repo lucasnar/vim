@@ -5,7 +5,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -18,6 +18,9 @@ Plugin 'mileszs/ack.vim'
 
 " Command-T
 Plugin 'wincent/command-t'
+
+" CtrlP
+Plugin 'kien/ctrlp.vim'
 
 " vim-multiple-cursors
 Plugin 'terryma/vim-multiple-cursors'
@@ -46,6 +49,9 @@ Plugin 'szw/vim-g'
 " Vue
 Plugin 'posva/vim-vue'
 
+" Python's PEP8 recommends weird indentation rules
+" Plugin 'vim-python-pep8-indent' " Didn't work for some reason
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -65,41 +71,57 @@ syntax on
 colorscheme monokai-phoenix
 set expandtab
 set shiftwidth=2
+set tabstop=2
 set softtabstop=2
 set autoindent
 set clipboard=unnamed
 set number
-set smartcase
 set hlsearch
 set ruler
 set title
 set laststatus=2
+
+" Ignore case when search is
 set ignorecase
 set smartcase
-set showcmd " enables char count
+
+ " Show partial command in status line
+set showcmd
+
 set mouse=a
 set backspace=2
 autocmd BufWritePre * StripWhitespace
 cnoreabbrev t tabnew
 cnoreabbrev W w
 cnoreabbrev Wq wq
-cnoreabbrev ct ConqueTermVSplit
-cnoreabbrev ctb ConqueTermVSplit bash
+cnoreabbrev Q q
+cnoreabbrev ct ConqueTermSplit
+cnoreabbrev ctb ConqueTermSplit bash
+cnoreabbrev ctbv ConqueTermVSplit bash
+
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+
 " Easy NERDTree opening
 map <Leader>n :NERDTree<CR>
+let NERDTreeWinPos = 'left'
+
 " New line adding
 map <Leader>o o<Esc>
 map <Leader>O O<Esc>
+
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
 " Don't skip rows of wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+" Get back to normal mode when pressing jj while in insert mode
+inoremap jj <Esc>
 
 " vim-g (Google) plugin config
 let g:vim_g_open_command = "open"
@@ -112,4 +134,25 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 nnoremap <Leader>a :Ack!<Space>
-let NERDTreeWinPos = 'left'
+
+" wildignore to ignore files in listings Command-T uses it
+" Binary ignore
+set wildignore +=*.o,*.obj
+
+" Log ignore
+set wildignore +=*/log
+
+" Web projects ignore
+set wildignore +=*.min.js
+
+" Node ignore
+set wildignore +=*/node_modules
+
+" Elixir/Phoenix ignore
+set wildignore +=*/_build
+
+" Sane Ignore For ctrlp (not sure if it sees wildignore)
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\.git$\|log\|tmp$',
+      \ 'file': '\.exe$\|\.so$\|\.dat$\|\.png$\|\.min.js$'
+      \ }
