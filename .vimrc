@@ -15,6 +15,10 @@ Plugin 'mileszs/ack.vim'
 
 " airline
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" vim-fugitive (git integration)
+Plugin 'tpope/vim-fugitive'
 
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
@@ -125,6 +129,10 @@ nnoremap k gk
 
 " Get back to normal mode when pressing jj while in insert mode
 inoremap jj <Esc>
+
+" vim-airline related config
+let g:airline#extensions#tabline#enabled = 1 " prettier tabs
+let g:airline_theme='simple'
 
 " vim-g (Google) plugin config
 let g:vim_g_open_command = "open"
