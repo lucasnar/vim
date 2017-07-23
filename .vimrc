@@ -10,11 +10,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Nerdtree
-Plugin 'scrooloose/nerdtree'
-
 " ack.vim
 Plugin 'mileszs/ack.vim'
+
+" airline
+Plugin 'vim-airline/vim-airline'
+
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
 
 " Command-T
 Plugin 'wincent/command-t'
