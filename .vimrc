@@ -50,6 +50,9 @@ Plugin 'kchmck/vim-coffee-script'
 " Monokai-phoenix (theme)
 Plugin 'reewr/vim-monokai-phoenix'
 
+" Macvim light (theme)
+Plugin 'aunsira/macvim-light'
+
 " Google
 Plugin 'szw/vim-g'
 
@@ -76,6 +79,7 @@ filetype plugin indent on    " required
 
 syntax on
 colorscheme monokai-phoenix
+colorscheme macvim-light
 set expandtab
 set shiftwidth=2
 set tabstop=2
@@ -131,8 +135,8 @@ nnoremap k gk
 inoremap jj <Esc>
 
 " vim-airline related config
-let g:airline#extensions#tabline#enabled = 1 " prettier tabs
-let g:airline_theme='simple'
+" let g:airline#extensions#tabline#enabled = 1 " prettier tabs
+" let g:airline_theme='simple'
 
 " vim-g (Google) plugin config
 let g:vim_g_open_command = "open"
@@ -167,3 +171,7 @@ let g:ctrlp_custom_ignore = {
       \ 'dir':  '\.git$\|log\|tmp$',
       \ 'file': '\.exe$\|\.so$\|\.dat$\|\.png$\|\.min.js$'
       \ }
+
+" Buffer Navigation
+nnoremap < :bp<CR>
+nnoremap > :bn<CR>
