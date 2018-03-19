@@ -1,5 +1,11 @@
 # Lucas Narciso's Personal Vim Files
 
+## Deprecation notice
+
+I have deprecated this repository in favor of [my dotfiles' repository](https://github.com/lucasnar/dotfiles), which contains not only my `.vimrc`, but also other useful files I use.
+
+## Old description
+
 Vim is a great tool out of the box, but it is also highly modifiable and can be personalized to be even better. This repository contains my personalized vim configuration files. The important file here is the `.vimrc`. In order to try this configuration out, you can do what I do: clone the repository, move the contents to `~/.vim` (I do this in an attempt to be a little bit more organized) and `.vimrc` to `~\.vimrc`, install Vundle, and use it to install the plugins included here. I run the commands bellow:
 
 ```
